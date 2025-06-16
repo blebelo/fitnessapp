@@ -7,8 +7,7 @@ export default function Home() {
   const router = useRouter();
 
   const handleClient = () => {
-    // router.push("/client");
-    return null;
+    router.push("/client");
   };
 
   const handleTrainer = () => {
@@ -20,6 +19,7 @@ export default function Home() {
       <header className={styles.header}>
         <div className={styles.navbar}>
           <Image
+            className={styles.logo}
             src="/assets/logo-black.png"
             alt="Blog AI logo"
             width={80}

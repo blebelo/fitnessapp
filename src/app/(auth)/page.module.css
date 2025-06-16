@@ -30,6 +30,11 @@
     border: none;
 }
 
+.buttons,
+.logo {
+  padding: 0 1rem;
+}
+
 .trainer{
   background-color: black;   
   color: white; 
@@ -48,10 +53,10 @@
   transition: transform 0.6s ease;
 }
 
-.login:hover,
-.register:hover {
+.client:hover,
+.trainer:hover {
     cursor: pointer;
-    transform: scale(1.07);
+    transform: scale(1.1);
 }
 
 

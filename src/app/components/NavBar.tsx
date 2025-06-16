@@ -14,6 +14,10 @@ const NavBar: React.FC<NavBarProps> = ({ path }) => {
     router.push(`/${path.toLowerCase()}`);
   };
 
+const goHome = () => {
+    router.push('/');
+  };
+
   return (
     <div className={styles.navbar}>
       <Image
@@ -23,6 +27,7 @@ const NavBar: React.FC<NavBarProps> = ({ path }) => {
         width={428}
         height={87}
         priority
+        onClick={goHome}
       />
 
       <button onClick={handleClick} className={styles.button}>

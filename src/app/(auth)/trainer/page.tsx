@@ -5,6 +5,7 @@ import LoginForm from "@/app/components/Login";
 import { useUserActions } from "@/providers/AuthProvider";
 import { ITrainer } from "@/providers/AuthProvider/context";
 import NavBar from "@/app/components/NavBar";
+import styles from './page.module.css' 
 
 const AuthPage = () => {
   const [isSignUp, setIsSignUp] = useState(true);
@@ -33,7 +34,7 @@ const AuthPage = () => {
 
   return (
     <div>
-      <header style={{ width: "100vw" }}>
+      <header className={styles.header}>
         <NavBar path="Client"/>
       </header>
       

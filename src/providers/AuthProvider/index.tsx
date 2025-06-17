@@ -4,6 +4,7 @@ import { UserReducer } from "./reducer";
 import { INITIAL_STATE, ITrainer, UserStateContext, UserActionContext, ILogin, IClient } from "./context";
 import { createTrainerError, createTrainerPending, createTrainerSuccess, loginUserError, loginUserPending, loginUserSuccess, registerUserError, registerUserPending, registerUserSuccess } from "./actions";
 import { axiosInstance } from "@/utils/axiosInstance";
+import { jwtDecode } from "jwt-decode";
 
 
 export const AuthProvider = ({children}: {children: React.ReactNode}) => {
@@ -34,7 +35,12 @@ export const AuthProvider = ({children}: {children: React.ReactNode}) => {
         .then(
             (response) => {
                 loginUserSuccess(response.data);
-                localStorage.setItem('currentUserDeets', JSON.stringify(response.data.data.token));
+                const jwToken = response.data.data.token
+                const [authType, token] = jwToken.split(' ')
+                console.log("Login Succesful");
+                localStorage.setItem('currentUserDeets', JSON.stringify(jwtDecode(jwToken)));
+                console.log(authType)
+                console.log(token)
             }
         ).catch(
             () => {
@@ -53,8 +59,9 @@ export const AuthProvider = ({children}: {children: React.ReactNode}) => {
                 console.log("CLient sign up successful");
             }
         ).catch(
-            () => {
+            (error) => {
                 registerUserError();
+                console.log(error)
             })
     };
 

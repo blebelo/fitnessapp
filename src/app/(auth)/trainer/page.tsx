@@ -22,12 +22,11 @@ const AuthPage = () => {
       planType: "base",
       activeState: true,
       trial: false,
-      policiesAccepted: true,
+      policiesAccepted: trainer.policiesAccepted,
     });
   };
 
   const handleLogin = (values: { email: string; password: string }) => {
-    console.log("Log in with:", values);
     login(values);
   };
 

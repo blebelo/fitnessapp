@@ -86,9 +86,6 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
               suffixIcon={null}
               prefix={<CalendarOutlined />}
               placeholder="Date of Birth"
-              onChange={(_, dateString) => {
-                form.setFieldsValue({ dateOfBirth: dateString });
-              }}
             />
           </Form.Item>
 

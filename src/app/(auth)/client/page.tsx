@@ -5,7 +5,7 @@ import LoginForm from "@/app/components/Login";
 import { useUserActions } from "@/providers/AuthProvider";
 import { IClient } from "@/providers/AuthProvider/context";
 import NavBar from "@/app/components/NavBar";
-import styles from '../trainer/page.module.css' 
+import styles from '../trainer/page.module.css';
 
 const AuthPage = () => {
   const [isSignUp, setIsSignUp] = useState(true);
@@ -15,17 +15,15 @@ const AuthPage = () => {
     registerUser({
       name: client.name,
       email: client.email,
-      role: "client",
       password: client.password,
-      dateOfBirth:  client.dateOfBirth,
+      dateOfBirth: client.dateOfBirth,
       confirmPassword: client.confirmPassword,
       contactNumber: client.contactNumber,
-      policiesAccepted: client.policiesAccepted,
+      policiesAccepted: true,
     });
   };
 
   const handleLogin = (values: { email: string; password: string }) => {
-    console.log("Log in with:", values);
     login(values);
   };
 

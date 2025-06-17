@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Button, Form, Input, Typography } from "antd";
+import { Button, Checkbox, Form, Input, Typography } from "antd";
 import type { FormProps } from "antd";
 import { useStyles } from "./style/style";
 import { ITrainer } from "@/providers/AuthProvider/context";
@@ -106,6 +106,25 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
               placeholder="Confirm Password"
             />
           </Form.Item>
+
+                  <Form.Item
+          name="acceptPolicies"
+          valuePropName="checked"
+          rules={[
+            {
+              validator: (_, value) =>
+                value
+                  ? Promise.resolve()
+                  : Promise.reject(
+                      new Error("You must accept the app policies")
+                    ),
+            },
+          ]}
+        >
+          <Checkbox className={styles.Checkbox}>
+            I accept all app policies
+          </Checkbox>
+        </Form.Item>
         </div>
 
         <Form.Item>

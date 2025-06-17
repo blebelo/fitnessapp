@@ -20,11 +20,11 @@ export interface ITrainer extends ILogin {
 
 export interface IClient extends ILogin {
     name: string;
-    dateOfBirth: string;
+    dateOfBirth: Date;
     confirmPassword: string;
     contactNumber: string;
     policiesAccepted: boolean;
-    role: string;   
+    role?: string;   
 }
 
 export interface IUserStateContext {

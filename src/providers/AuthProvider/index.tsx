@@ -1,8 +1,8 @@
 'use client'
 import React, { useContext, useReducer } from "react";
 import { UserReducer } from "./reducer";
-import { INITIAL_STATE, ITrainer, UserStateContext, UserActionContext, ILogin } from "./context";
-import { createTrainerError, createTrainerPending, createTrainerSuccess, loginUserError, loginUserPending, loginUserSuccess } from "./actions";
+import { INITIAL_STATE, ITrainer, UserStateContext, UserActionContext, ILogin, IClient } from "./context";
+import { createTrainerError, createTrainerPending, createTrainerSuccess, loginUserError, loginUserPending, loginUserSuccess, registerUserError, registerUserPending, registerUserSuccess } from "./actions";
 import { axiosInstance } from "@/utils/axiosInstance";
 
 
@@ -18,6 +18,7 @@ export const AuthProvider = ({children}: {children: React.ReactNode}) => {
         .then(
             (response) => {
                 createTrainerSuccess(response.data);
+                console.log("Trainer sign up successful");
             }
         ).catch(
             () => {
@@ -41,10 +42,26 @@ export const AuthProvider = ({children}: {children: React.ReactNode}) => {
             })
     };
 
+    const registerUser = async (user: IClient) => {
+        dispatch(registerUserPending());
+         const endpoint = 'users/register/mobile';
+        
+        await instance.post(endpoint, user)
+        .then(
+            (response) => {
+                registerUserSuccess(response.data);
+                console.log("CLient sign up successful");
+            }
+        ).catch(
+            () => {
+                registerUserError();
+            })
+    };
+
 
     return (
         <UserStateContext.Provider value={state}>
-            <UserActionContext value={{createTrainer, login}}>
+            <UserActionContext value={{createTrainer, login, registerUser}}>
                 {children}
             </UserActionContext>
         </UserStateContext.Provider>

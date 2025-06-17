@@ -9,13 +9,22 @@ export interface ILogin{
 
 export interface ITrainer extends ILogin {
     name: string;
-    confirmPassword: string;
-    role: string;   
+    confirmPassword ?: string;
     contactNumber: string;
     planType: string;
     activeState: boolean;
     trial: boolean;
     policiesAccepted: boolean;
+    role: string;   
+}
+
+export interface IClient extends ILogin {
+    name: string;
+    dateOfBirth: string;
+    confirmPassword: string;
+    contactNumber: string;
+    policiesAccepted: boolean;
+    role: string;   
 }
 
 export interface IUserStateContext {
@@ -24,11 +33,13 @@ export interface IUserStateContext {
     isError: boolean;
     trainer?: ITrainer;
     login?: ILogin;
+    client?: IClient;
 }
 
 export interface IUserActionContext {
     createTrainer: (trainer: ITrainer) => void;
     login: (login: ILogin) => void;
+    registerUser: (client: IClient) => void; 
 }
 
 export const INITIAL_STATE = {

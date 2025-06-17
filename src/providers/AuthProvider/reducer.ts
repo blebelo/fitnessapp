@@ -24,4 +24,14 @@ export const UserReducer = handleActions<IUserStateContext, IUserStateContext>({
 
     [UserActionEnums.loginUserError]:(state, action) =>(
         {...state, ...action.payload}),
+    
+    // registerUser
+    [UserActionEnums.registerUserPending]:(state, action) =>(
+        {...state, ...action.payload}),
+
+    [UserActionEnums.registerUserSuccess]:(state, action) =>(
+        {...state, ...action.payload}),
+
+    [UserActionEnums.registerUserError]:(state, action) =>(
+        {...state, ...action.payload}),
     },INITIAL_STATE)

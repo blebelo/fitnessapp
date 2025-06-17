@@ -14,8 +14,8 @@ const NavBar: React.FC<NavBarProps> = ({ path }) => {
     router.push(`/${path.toLowerCase()}`);
   };
 
-const goHome = () => {
-    router.push('/');
+  const goHome = () => {
+    router.push("/");
   };
 
   return (

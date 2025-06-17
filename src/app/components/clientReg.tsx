@@ -1,19 +1,20 @@
 "use client";
 import React from "react";
-import { Button, Checkbox, Form, Input, Typography } from "antd";
+import { Button, Checkbox, DatePicker, Form, Input, Typography } from "antd";
 import type { FormProps } from "antd";
 import { useStyles } from "./style/style";
-import { ITrainer } from "@/providers/AuthProvider/context";
+import { IClient } from "@/providers/AuthProvider/context";
 import {
   UserOutlined,
   MailOutlined,
   PhoneOutlined,
   LockOutlined,
+  CalendarOutlined,
 } from "@ant-design/icons";
 
 interface SignUpFormProps {
-  onFinish: FormProps<ITrainer>["onFinish"];
-  onFinishFailed?: FormProps<ITrainer>["onFinishFailed"];
+  onFinish: FormProps<IClient>["onFinish"];
+  onFinishFailed?: FormProps<IClient>["onFinishFailed"];
   toggleForm: () => void;
 }
 
@@ -36,7 +37,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
         onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
-        <Typography className={styles.Typography}>Trainer Sign Up</Typography>
+        <Typography className={styles.Typography}>Client Sign Up</Typography>
 
         <div className={styles.FormItems}>
           <Form.Item
@@ -75,6 +76,20 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
           </Form.Item>
 
           <Form.Item
+            name="dateOfBirth"
+            rules={[
+              { required: true, message: "Please select your date of birth" },
+            ]}
+          >
+            <DatePicker
+              className={styles.Input}
+              suffixIcon={null}
+              prefix={<CalendarOutlined />}
+              placeholder="Date of Birth"
+            />
+          </Form.Item>
+
+          <Form.Item
             name="password"
             rules={[{ required: true, message: "Please input your password" }]}
           >
@@ -106,8 +121,9 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
               placeholder="Confirm Password"
             />
           </Form.Item>
+        </div>
 
-                  <Form.Item
+        <Form.Item
           name="acceptPolicies"
           valuePropName="checked"
           rules={[
@@ -125,14 +141,13 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
             I accept all app policies
           </Checkbox>
         </Form.Item>
-        </div>
 
         <Form.Item>
-          <Button 
-          type="primary" 
-          htmlType="submit" 
-          className={styles.Submit}
-          disabled={!acceptPolicies}
+          <Button
+            type="primary"
+            htmlType="submit"
+            className={styles.Submit}
+            disabled={!acceptPolicies}
           >
             Sign Up
           </Button>

@@ -1,6 +1,6 @@
 'use client'
 import {createAction} from 'redux-actions';
-import { ILogin, ITrainer, IUserStateContext } from './context';
+import { IClient, ILogin, ITrainer, IUserStateContext } from './context';
 
 export enum UserActionEnums {
     createTrainerPending = 'CREATE_TRAINER_PENDING',
@@ -10,6 +10,10 @@ export enum UserActionEnums {
     loginUserPending = 'LOGIN_USER_PENDING',
     loginUserSuccess = 'LOGIN_USER_SUCCESS',
     loginUserError = 'LOGIN_USER_ERROR',
+
+    registerUserPending = 'REGISTER_USER_PENDING',
+    registerUserSuccess = 'REGISTER_USER_SUCCESS',
+    registerUserError = 'REGISTER_USER_ERROR',
 }
 
 // RequestState Objects Declared Once For Reuse 
@@ -62,3 +66,22 @@ export const loginUserError = createAction<IUserStateContext>(
     UserActionEnums.loginUserError,
     () => RequestState.Error
 )
+
+// registerUser Action States
+export const registerUserPending = createAction<IUserStateContext>(
+    UserActionEnums.registerUserPending, 
+    () => RequestState.Pending
+);
+
+export const registerUserSuccess = createAction<IUserStateContext, IClient>(
+    UserActionEnums.registerUserSuccess,
+    (client: IClient) => ({
+        ...RequestState.Success,
+        client
+    })
+);
+
+export const registerUserError = createAction<IUserStateContext>(
+    UserActionEnums.registerUserError,
+    () => RequestState.Error
+);

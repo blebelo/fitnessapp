@@ -10,7 +10,7 @@ export const useStyles = createStyles({
     ,
     Form: css`
         background-color: #ffffff;
-        padding: 2rem;
+        padding: 1rem;
         border-radius: 1rem;
         border-style: solid;
         border-width: 0.01rem;
@@ -33,6 +33,8 @@ export const useStyles = createStyles({
     `,
     Input: css `
         width: 15rem;
-        
+    `,
+    Checkbox: css`
+
     `
 })

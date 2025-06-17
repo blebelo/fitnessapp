@@ -1,28 +1,25 @@
 "use client";
 import React, { useState } from "react";
-import SignUpForm from "@/app/components/trainerReg";
+import SignUpForm from "@/app/components/clientReg";
 import LoginForm from "@/app/components/Login";
 import { useUserActions } from "@/providers/AuthProvider";
-import { ITrainer } from "@/providers/AuthProvider/context";
+import { IClient } from "@/providers/AuthProvider/context";
 import NavBar from "@/app/components/NavBar";
-import styles from './page.module.css' 
+import styles from '../trainer/page.module.css';
 
 const AuthPage = () => {
   const [isSignUp, setIsSignUp] = useState(true);
-  const { createTrainer, login } = useUserActions();
+  const { registerUser, login } = useUserActions();
 
-  const handleSignUp = (trainer: ITrainer) => {
-    createTrainer({
-      name: trainer.name,
-      email: trainer.email,
-      role: "admin",
-      password: trainer.password,
-      confirmPassword: trainer.confirmPassword,
-      contactNumber: trainer.contactNumber,
-      planType: "base",
-      activeState: true,
-      trial: false,
-      policiesAccepted: trainer.policiesAccepted,
+  const handleSignUp = (client: IClient) => {
+    registerUser({
+      name: client.name,
+      email: client.email,
+      password: client.password,
+      dateOfBirth: client.dateOfBirth,
+      confirmPassword: client.confirmPassword,
+      contactNumber: client.contactNumber,
+      policiesAccepted: true,
     });
   };
 
@@ -33,7 +30,7 @@ const AuthPage = () => {
   return (
     <div>
       <header className={styles.header}>
-        <NavBar path="Client"/>
+        <NavBar path="Trainer"/>
       </header>
       
       {isSignUp ? (

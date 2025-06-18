@@ -33,4 +33,4 @@ export const INITIAL_STATE = {
 }
 
 export const TrainerStateContext = createContext<ITrainerStateContext>(INITIAL_STATE);
-export const TrainerActionContext = createContext<ITrainerActionContext | undefined>(undefined);
+export const TrainerActionContext = createContext<ITrainerActionContext>(undefined!);

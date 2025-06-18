@@ -3,13 +3,14 @@ import { createContext } from "react"
 
 
 export interface IClient{
+    _id?: string
     fullName: string;
     email: string;
     contactNumber: string;
     sex: string;
     dateOfBirth: Date;
     activeState: boolean;
-    trainerId: string;
+    trainerId?: string;
 }
 
 export interface ITrainerStateContext {
@@ -17,11 +18,12 @@ export interface ITrainerStateContext {
     isSuccess: boolean;
     isError: boolean;
     client?: IClient;
-    errorMessage?: string;
+    clients?: IClient[];
 }
 
 export interface ITrainerActionContext{
     createClient: (client: IClient) => void;
+    getClients: () => void;
 }
  
 export const INITIAL_STATE = {

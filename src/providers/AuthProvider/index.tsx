@@ -4,7 +4,6 @@ import { UserReducer } from "./reducer";
 import { INITIAL_STATE, ITrainer, UserStateContext, UserActionContext, ILogin, IClient } from "./context";
 import { createTrainerError, createTrainerPending, createTrainerSuccess, loginUserError, loginUserPending, loginUserSuccess, registerUserError, registerUserPending, registerUserSuccess } from "./actions";
 import { axiosInstance } from "@/utils/axiosInstance";
-import { jwtDecode } from "jwt-decode";
 import { useRouter } from "next/navigation";
 
 
@@ -37,9 +36,13 @@ export const AuthProvider = ({children}: {children: React.ReactNode}) => {
             (response) => {
                 dispatch(loginUserSuccess(response.data));
                 const jwToken = response.data.data.token
-                sessionStorage.setItem('token', JSON.stringify(jwToken));
-                sessionStorage.setItem('userDetails', JSON.stringify(jwtDecode(jwToken)));
-                router.push('/trainer/dashboard')
+                sessionStorage.setItem('token', jwToken);
+                sessionStorage.setItem('role', jwToken.role)
+                sessionStorage.setItem('id', jwToken.id)
+                sessionStorage.setItem('name', jwToken.name)
+                router.push(jwToken.role === 'admin'
+                    ? '/trainer/dashboard'
+                    : '/client/dashboard')
             }
         ).catch(
             () => {

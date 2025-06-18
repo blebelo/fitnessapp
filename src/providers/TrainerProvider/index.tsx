@@ -1,10 +1,9 @@
 'use client'
-
 import { useContext, useReducer } from "react"
 import { IClient, INITIAL_STATE, TrainerActionContext, TrainerStateContext } from "./context"
 import { TrainerReducer } from "./reducer"
 import { axiosInstance } from "@/utils/axiosInstance"
-import { createClientError, createClientPending, createClientSuccess } from "./actions"
+import { createClientError, createClientPending, createClientSuccess, getClientsError, getClientsPending, getClientsSuccess } from "./actions"
 
 
 export const TrainerProvider = ({children}: {children: React.ReactNode}) => {
@@ -18,19 +17,35 @@ export const TrainerProvider = ({children}: {children: React.ReactNode}) => {
         await instance.post(endpoint, client)
         .then(
             (response) => {
-                dispatch(createClientSuccess(response.data));
-                console.log('Client Successfully Created')
+                dispatch(createClientSuccess(response.data.data));
             }
         ).catch(
-            () => {
+            (error) => {
                 dispatch(createClientError());
+                console.error(error.message);
             }
         ) 
     }
 
+    const getClients = async () => {
+        dispatch(getClientsPending());
+        const userId = sessionStorage.getItem('id') || '';        
+        const endpoint = `/client/trainer/${userId}/clients`;
+
+        await instance.get(endpoint)
+        .then(
+            (response) => {
+                dispatch(getClientsSuccess(response.data.data));
+            }
+        ).catch((error) => {
+                console.error(error.message);
+                dispatch(getClientsError());
+            });
+    };
+
     return(
         <TrainerStateContext.Provider value={state}>
-            <TrainerActionContext.Provider value ={{ createClient }} >
+            <TrainerActionContext.Provider value={{ createClient, getClients }} >
                 {children}
             </TrainerActionContext.Provider>
         </TrainerStateContext.Provider>

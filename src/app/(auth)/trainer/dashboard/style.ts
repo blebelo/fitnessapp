@@ -2,31 +2,43 @@ import { createStyles, css } from "antd-style";
 
 export const useStyles = createStyles({
     Container: css`
-        margin: 4rem;
-    `,
-    Button: css`
-        background-color: #1C4122;
-        color: #ffffff;
-    `,
-    Card: css`
-        background-color: #A9CFB9;
-        width:100%; 
-    `,
-    NewClient: css`
-        background-color: #1C4122;
-        color: #ffffff;
-        margin-bottom: 1rem;
+        background-color: #fffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 4rem;`
+    ,
+    Form: css`
+        background-color: #ffffff;
+        padding: 1rem;
+        border-radius: 1rem;
+        border-style: solid;
+        border-width: 0.01rem;
+        border-color: #7a7a7a;
+        justify-items: center;
     `,
     Typography: css`
-        font-size: 2rem;
-        font-weight: 300;
-        margin: 1rem 0;
+        font-weight: 500;
+        font-size: 2.5rem;
+        padding: 0 2.5rem 1.5rem;
+        margin-bottom: 1rem;
+        border-bottom: .5px solid rgba(0, 0, 0, 0.25);
     `,
-    CancelButton: css`
-        background-color: #000000;
-        color: #ffffff;
+
+    FormItems: css`
+        display: block;
+        justify-items: center;
     `,
     Input: css `
         width: 15rem;
     `,
+    Button: css`
+        background-color:rgb(0, 0, 0);
+        color: #ffffff;
+    `,
+    Card: css`
+        width:100%; 
+    `,
+
+
 })

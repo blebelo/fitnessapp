@@ -1,4 +1,4 @@
-import {createStyles,css} from 'antd-style';
+import { createStyles, css } from "antd-style";
 
 export const useStyles = createStyles({
     Container: css`
@@ -21,12 +21,10 @@ export const useStyles = createStyles({
         font-weight: 500;
         font-size: 2.5rem;
         padding: 0 2.5rem 1.5rem;
-        margin-bottom: 1rem;
+        // margin-bottom: 1rem;
         border-bottom: .5px solid rgba(0, 0, 0, 0.25);
     `,
-    Submit: css`
-        background-color: black;
-    `,
+
     FormItems: css`
         display: block;
         justify-items: center;
@@ -34,4 +32,19 @@ export const useStyles = createStyles({
     Input: css `
         width: 15rem;
     `,
+    Button: css`
+        background-color:rgb(0, 0, 0);
+        color: #ffffff;
+        margin:  2.5rem 1.5rem;
+    `,
+    Card: css`
+        width:100%; 
+    `,
+    Heading: css`
+        width: 90vw;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between`
+
 })

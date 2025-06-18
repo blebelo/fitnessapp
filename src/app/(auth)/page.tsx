@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
 
-export default function Home() {
+  const Home: React.FC = () => {
   const router = useRouter();
 
   const handleClient = () => {
@@ -51,3 +51,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Home;

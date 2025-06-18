@@ -137,7 +137,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
             },
           ]}
         >
-          <Checkbox className={styles.Checkbox}>
+          <Checkbox>
             I accept all app policies
           </Checkbox>
         </Form.Item>

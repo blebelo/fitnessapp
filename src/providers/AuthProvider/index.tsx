@@ -5,12 +5,22 @@ import { INITIAL_STATE, ITrainer, UserStateContext, UserActionContext, ILogin, I
 import { createTrainerError, createTrainerPending, createTrainerSuccess, loginUserError, loginUserPending, loginUserSuccess, registerUserError, registerUserPending, registerUserSuccess } from "./actions";
 import { axiosInstance } from "@/utils/axiosInstance";
 import { useRouter } from "next/navigation";
+import { jwtDecode } from "jwt-decode";
 
 
 export const AuthProvider = ({children}: {children: React.ReactNode}) => {
     const [state, dispatch] = useReducer(UserReducer, INITIAL_STATE)
     const instance = axiosInstance();
     const router = useRouter();
+    
+    interface ITokenData {
+        id: string;
+        name: string;
+        role: string;
+        features?: string[];
+        iat: number;
+        exp?: string;
+    }
 
     const createTrainer = async (trainer: ITrainer) => {
         dispatch(createTrainerPending());
@@ -35,8 +45,9 @@ export const AuthProvider = ({children}: {children: React.ReactNode}) => {
         .then(
             (response) => {
                 dispatch(loginUserSuccess(response.data));
-                const jwToken = response.data.data.token
-                sessionStorage.setItem('token', jwToken);
+                sessionStorage.setItem('token', response.data.data.token);
+                const jwToken = jwtDecode<ITokenData>(response.data.data.token)
+                
                 sessionStorage.setItem('role', jwToken.role)
                 sessionStorage.setItem('id', jwToken.id)
                 sessionStorage.setItem('name', jwToken.name)

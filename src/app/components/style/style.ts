@@ -34,7 +34,4 @@ export const useStyles = createStyles({
     Input: css `
         width: 15rem;
     `,
-    Checkbox: css`
-
-    `
 })

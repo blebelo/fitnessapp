@@ -5,11 +5,13 @@ import { INITIAL_STATE, ITrainer, UserStateContext, UserActionContext, ILogin, I
 import { createTrainerError, createTrainerPending, createTrainerSuccess, loginUserError, loginUserPending, loginUserSuccess, registerUserError, registerUserPending, registerUserSuccess } from "./actions";
 import { axiosInstance } from "@/utils/axiosInstance";
 import { jwtDecode } from "jwt-decode";
+import { useRouter } from "next/navigation";
 
 
 export const AuthProvider = ({children}: {children: React.ReactNode}) => {
     const [state, dispatch] = useReducer(UserReducer, INITIAL_STATE)
     const instance = axiosInstance();
+    const router = useRouter();
 
     const createTrainer = async (trainer: ITrainer) => {
         dispatch(createTrainerPending());
@@ -18,12 +20,11 @@ export const AuthProvider = ({children}: {children: React.ReactNode}) => {
         await instance.post(endpoint, trainer)
         .then(
             (response) => {
-                createTrainerSuccess(response.data);
-                console.log("Trainer sign up successful");
+                dispatch(createTrainerSuccess(response.data));
             }
         ).catch(
             () => {
-                createTrainerError();
+                dispatch(createTrainerError());
             })
     };
 
@@ -34,17 +35,15 @@ export const AuthProvider = ({children}: {children: React.ReactNode}) => {
         await instance.post(endpoint, user)
         .then(
             (response) => {
-                loginUserSuccess(response.data);
+                dispatch(loginUserSuccess(response.data));
                 const jwToken = response.data.data.token
-                const [authType, token] = jwToken.split(' ')
-                console.log("Login Succesful");
-                localStorage.setItem('currentUserDeets', JSON.stringify(jwtDecode(jwToken)));
-                console.log(authType)
-                console.log(token)
+                sessionStorage.setItem('token', JSON.stringify(jwToken));
+                sessionStorage.setItem('userDetails', JSON.stringify(jwtDecode(jwToken)));
+                router.push('/trainer/dashboard')
             }
         ).catch(
             () => {
-                loginUserError();
+                dispatch(loginUserError());
             })
     };
 
@@ -55,22 +54,19 @@ export const AuthProvider = ({children}: {children: React.ReactNode}) => {
         await instance.post(endpoint, user)
         .then(
             (response) => {
-                registerUserSuccess(response.data);
-                console.log("CLient sign up successful");
+                dispatch(registerUserSuccess(response.data));
             }
         ).catch(
-            (error) => {
-                registerUserError();
-                console.log(error)
+            () => {
+                dispatch(registerUserError());
             })
     };
 
-
     return (
         <UserStateContext.Provider value={state}>
-            <UserActionContext value={{createTrainer, login, registerUser}}>
+            <UserActionContext.Provider value={{ createTrainer, login, registerUser }}>
                 {children}
-            </UserActionContext>
+            </UserActionContext.Provider>
         </UserStateContext.Provider>
     )
 }

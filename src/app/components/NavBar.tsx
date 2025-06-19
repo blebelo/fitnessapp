@@ -10,9 +10,12 @@ interface NavBarProps {
 const NavBar: React.FC<NavBarProps> = ({ path }) => {
   const router = useRouter();
 
-  const handleClick = () => {
-    router.push(`/${path.toLowerCase()}`);
-  };
+const handleClick = () => {
+  sessionStorage.clear();
+  const lowerPath = path.toLowerCase();
+  const destination = lowerPath === 'logout' ? '/' : `/${lowerPath}`;
+  router.push(destination);
+};
 
   const goHome = () => {
     router.push("/");

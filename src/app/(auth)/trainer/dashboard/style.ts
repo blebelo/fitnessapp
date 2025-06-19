@@ -1,13 +1,15 @@
 import { createStyles, css } from "antd-style";
 
 export const useStyles = createStyles({
+    Header: css`
+        width: 100vw;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
+    `,
     Container: css`
-        background-color: #fffff;
-        display: flex;
+        width: 95vw;
         justify-content: center;
         align-items: center;
-        margin-top: 4rem;`
-    ,
+    `,
     Form: css`
         background-color: #ffffff;
         padding: 1rem;
@@ -20,11 +22,13 @@ export const useStyles = createStyles({
     Typography: css`
         font-weight: 500;
         font-size: 2.5rem;
-        padding: 0 2.5rem 1.5rem;
+        padding: 0 2.5rem ;
         // margin-bottom: 1rem;
-        border-bottom: .5px solid rgba(0, 0, 0, 0.25);
+        // border-bottom: .5px solid rgba(0, 0, 0, 0.25);
     `,
-
+    Cards: css`
+        width: 95vw;
+    `,
     FormItems: css`
         display: block;
         justify-items: center;
@@ -41,10 +45,14 @@ export const useStyles = createStyles({
         width:100%; 
     `,
     Heading: css`
-        width: 90vw;
+        width: 100vw;
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: space-between`
+        justify-content: space-between
+    `,
+    Table: css`
+        width: 100%;
+    `
 
 })

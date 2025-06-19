@@ -19,7 +19,7 @@ const TrainerDashboard: React.FC = () => {
   const { clients } = useTrainerState();
 
   const showModal = () => setIsModalVisible(true);
-
+  const hideModal = () => setIsModalVisible(false);
   const submitForm = (client: IClient) => {
     try {
       const userId = sessionStorage.getItem("id") ?? "";
@@ -32,14 +32,14 @@ const TrainerDashboard: React.FC = () => {
         activeState: true,
         trainerId: userId,
       });
+      hideModal();
     } catch (error) {
       console.error("Error submitting form:", error);
     }
   };
-
   const closeForm = () => {
     form.resetFields();
-    setIsModalVisible(false);
+    hideModal();
   };
 
   useEffect(() => {

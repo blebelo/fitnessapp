@@ -22,7 +22,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
   onFinishFailed,
   toggleForm,
 }) => {
-  const { styles } = useStyles();
+  const {styles} = useStyles();
   const [form] = Form.useForm();
   const acceptPolicies = Form.useWatch("acceptPolicies", form);
 

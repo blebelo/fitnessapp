@@ -9,6 +9,7 @@ export const useStyles = createStyles({
         width: 95vw;
         justify-content: center;
         align-items: center;
+        te
     `,
     Form: css`
         background-color: #ffffff;
@@ -22,12 +23,11 @@ export const useStyles = createStyles({
     Typography: css`
         font-weight: 500;
         font-size: 2.5rem;
-        padding: 0 2.5rem ;
-        // margin-bottom: 1rem;
-        // border-bottom: .5px solid rgba(0, 0, 0, 0.25);
+        padding: 0 2.5rem 1.5rem;
+        border-bottom:rgba(122, 122, 122, 0.24) 0.5px solid; 
     `,
     Cards: css`
-        width: 95vw;
+        width: 95%;
     `,
     FormItems: css`
         display: block;
@@ -49,7 +49,9 @@ export const useStyles = createStyles({
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: space-between
+        justify-content: center;
+        padding: 1rem;
+
     `,
     Table: css`
         width: 100%;

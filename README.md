@@ -1,6 +1,8 @@
 # 📘 Graduate Program Front-End Project
 
-This project was developed as part of a graduate program assessment. It showcases front-end development skills through form handling, basic navigation, and API integration.
+This project was developed as part of a graduate program assessment. It showcases front-end development skills through form handling, basic navigation, and API integration and state management.
+
+**NutriSync** is a platform that connects trainers and clients by syncing personalized meal plans from trainer to client.
 
 ## 🔧 Tech Stack
 
@@ -15,6 +17,8 @@ This project was developed as part of a graduate program assessment. It showcase
 - Form validation and submission  
 - Role-based components (e.g., Trainer, Admin)  
 - Component-driven structure for scalability
+- Secure JWT Authentication
+- Client View & Creation
 
 ## 🚀 Getting Started
 
@@ -42,5 +46,4 @@ This project was developed as part of a graduate program assessment. It showcase
 
 ## 📌 Notes
 - ❌ Not responsive (desktop-only layout)
-- 🧪 Designed for demo and internal use only
 - 🔧 Easily extensible for future features

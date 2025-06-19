@@ -13,13 +13,13 @@ import {
 
 const TrainerDashboard: React.FC = () => {
   const { styles } = useStyles();
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [createClientModal, setcreateClientModal] = useState(false);
   const [form] = Form.useForm();
   const { createClient, getClients } = useTrainerActions();
   const { clients } = useTrainerState();
 
-  const showModal = () => setIsModalVisible(true);
-  const hideModal = () => setIsModalVisible(false);
+  const showModal = () => setcreateClientModal(true);
+  const hideModal = () => setcreateClientModal(false);
   const submitForm = (client: IClient) => {
     try {
       const userId = sessionStorage.getItem("id") ?? "";
@@ -37,6 +37,7 @@ const TrainerDashboard: React.FC = () => {
       console.error("Error submitting form:", error);
     }
   };
+  
   const closeForm = () => {
     form.resetFields();
     hideModal();
@@ -62,7 +63,7 @@ const TrainerDashboard: React.FC = () => {
         <ClientTable data={clients ?? []} />
       </div>
 
-      <Modal open={isModalVisible} onCancel={closeForm} footer={null}>
+      <Modal open={createClientModal} onCancel={closeForm} footer={null}>
         <CreateClient onFinish={submitForm} />
       </Modal>
     </>

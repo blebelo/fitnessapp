@@ -37,7 +37,6 @@ export const FoodProvider = ({children}: {children: React.ReactNode}) => {
                 dispatch(createMealPlanError())
             }
         )
-
     }
 
     return (

@@ -19,23 +19,26 @@ export interface IFood{
  
 export interface ITotals {
     calories: number;
-    carbs: number;
-    protein: number;
-    fat: number
+    carbs: number | string;
+    protein: number | string;
+    fat: number | string;
 }
 
 export interface IMeal {
+    itemTotals: ITotals;
     _id?: string;
     name: string;
-    note?: string;
+    note: string;
     items: {
-        _id: string;
+        _id?: string;
         name: string;
         quantity: number;
         unit: string;
-        itemTotals: ITotals;
-        }[];
-    clientNotes: [];
+        calories: number;
+        carbs: string;
+        protein: string;
+        fat: string;
+    }[]
 }
 
 export interface IMealPlan {
@@ -48,6 +51,7 @@ export interface IMealPlan {
     description: string;
     notes: string;
     meals: IMeal[];
+    clientNotes: string[];
 }
 
 export interface IFoodStateContext{
@@ -62,6 +66,7 @@ export interface IFoodStateContext{
 export interface IFoodActionContext{
     createFood: (foodItem: IFood) => void;
     createMealPlan: (mealPlan: IMealPlan) => void;
+    // getClientPlans: () => void;
 }
 
 export const INITIAL_STATE = {

@@ -2,14 +2,17 @@
 import React, { useState } from "react";
 import SignUpForm from "@/app/components/trainerReg";
 import LoginForm from "@/app/components/Login";
-import { useUserActions } from "@/providers/AuthProvider";
+import { useUserActions, useUserState } from "@/providers/AuthProvider";
 import { ILogin, ITrainer } from "@/providers/AuthProvider/context";
 import NavBar from "@/app/components/NavBar";
 import styles from './page.module.css' 
+import Loader from "@/app/components/Loader";
+import { Typography } from "antd";
 
 const AuthPage: React.FC = () => {
   const [isSignUp, setIsSignUp] = useState(true);
   const { createTrainer, login } = useUserActions();
+  const { isPending, isError } = useUserState();
 
   const handleSignUp = (trainer: ITrainer) => {
     createTrainer({
@@ -35,6 +38,19 @@ const AuthPage: React.FC = () => {
       <header className={styles.header}>
         <NavBar path="Client"/>
       </header>
+
+      
+    {isPending && (
+      <div className={styles.CenteredContent}>
+        <Loader />
+      </div>
+    )}
+
+    {!isPending && isError && (
+      <div className={styles.CenteredContent}>
+        <Typography.Text type="danger">Error Authenticating User</Typography.Text>
+      </div>
+    )}
       
       {isSignUp ? (
         <SignUpForm

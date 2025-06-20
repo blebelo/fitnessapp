@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Button } from "antd"; 
 import style from './style/mealCard.module.css' 
-import { IMealPlan } from "@/providers/MealProvider/context";
+import { IMealPlan } from "@/providers/FoodProvider/context";
 
 interface MealPlanCardProps {
   mealPlan: IMealPlan;

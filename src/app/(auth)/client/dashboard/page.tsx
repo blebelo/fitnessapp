@@ -3,7 +3,7 @@ import { useStyles } from "./style";
 import { Col, Row, Typography } from "antd";
 import Navbar from "@/app/components/NavBar";
 import MealPlanCard from "@/app/components/mealCard";
-import { IMealPlan } from "@/providers/MealProvider/context";
+import { IMealPlan } from "@/providers/FoodProvider/context";
 
 const ClientDashboard: React.FC = () => {
   const { styles } = useStyles();

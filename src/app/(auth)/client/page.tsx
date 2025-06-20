@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import SignUpForm from "@/app/components/clientReg";
 import LoginForm from "@/app/components/Login";
 import { useUserActions } from "@/providers/AuthProvider";
-import { IClient } from "@/providers/AuthProvider/context";
+import { IClient, ILogin } from "@/providers/AuthProvider/context";
 import NavBar from "@/app/components/NavBar";
 import styles from '../trainer/page.module.css';
 
@@ -23,7 +23,7 @@ const AuthPage = () => {
     });
   };
 
-  const handleLogin = (values: { email: string; password: string }) => {
+  const handleLogin = (values: ILogin) => {
     login(values);
   };
 

@@ -10,8 +10,6 @@ interface ClientTableProps {
 }
 
 const ClientTable: React.FC<ClientTableProps> = ({ data }) => {
-
-
   const columns = [
     {
       title: "Name",

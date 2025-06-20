@@ -14,7 +14,11 @@ export enum FoodActionEnums {
 
     createMealPlanPending = 'CREATE_MEAL_PLAN_PENDING',
     createMealPlanSuccess = 'CREATE_MEAL_PLAN_SUCCESS',
-    createMealPlanError = 'CREATE_MEAL_PLAN_ERROR'
+    createMealPlanError = 'CREATE_MEAL_PLAN_ERROR',
+
+    getFoodItemsPending = 'GET_FOOD_ITEMS_PENDING',
+    getFoodItemsSuccess = 'GET_FOOD_ITEMS_SUCCESS',
+    getFoodItemsError = 'GET_FOOD_ITEMS_ERROR'
 }
 
 // RequestState Objects Declared Once For Reuse 
@@ -43,7 +47,6 @@ export const createFoodError = createAction<IFoodStateContext>(
   () => RequestState.Error
 );
 
-
 // createMealPlan Action States
 export const createMealPlanPending = createAction<IFoodStateContext>(
   FoodActionEnums.createMealPlanPending,
@@ -60,5 +63,24 @@ export const createMealPlanSuccess = createAction<IFoodStateContext, IMealPlan>(
 
 export const createMealPlanError = createAction<IFoodStateContext>(
   FoodActionEnums.createMealPlanError,
+  () => RequestState.Error
+);
+
+// getFoodItems Action States
+export const getFoodItemsPending = createAction<IFoodStateContext>(
+  FoodActionEnums.getFoodItemsPending,
+  () => RequestState.Pending
+);
+
+export const getFoodItemsSuccess = createAction<IFoodStateContext, IFood[]>(
+  FoodActionEnums.getFoodItemsSuccess,
+  (foodItems: IFood[]) => ({
+    ...RequestState.Success,
+    foodItems
+  })
+);
+
+export const getFoodItemsError = createAction<IFoodStateContext>(
+  FoodActionEnums.getFoodItemsError,
   () => RequestState.Error
 );

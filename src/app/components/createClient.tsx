@@ -92,11 +92,21 @@ const CreateClient: React.FC<CreateClientFormProps> = ({
 
           <Form.Item
             name="sex"
-            rules={[{ required: true, message: "Please select your gender" }]}
+            rules={[{ required: true, message: "Please select a sex" }]}
           >
-            <Select className={styles.Input} placeholder="Select gender">
+            <Select className={styles.Input} placeholder="Select Sex">
               <Option value="male">Male</Option>
               <Option value="female">Female</Option>
+            </Select>
+          </Form.Item>
+          
+          <Form.Item
+            name="activeState"
+            rules={[{ required: true, message: "Please select a value" }]}
+          >
+            <Select className={styles.Input} placeholder="Activate Client?">
+              <Option value="true">Yes</Option>
+              <Option value="false">No</Option>
             </Select>
           </Form.Item>
         </div>

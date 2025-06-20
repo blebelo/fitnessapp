@@ -2,7 +2,7 @@
 import { createContext } from "react"
 
 export interface IFood{
-    id?: string
+    _id?: string
     name: string
     protein: number
     carbs: number
@@ -35,10 +35,10 @@ export interface IMeal {
         quantity: number;
         unit: string;
         calories: number;
-        carbs: string;
-        protein: string;
-        fat: string;
-    }[]
+        carbs: number | string;
+        protein: number | string;
+        fat: number | string;
+    }[];
 }
 
 export interface IMealPlan {
@@ -59,6 +59,7 @@ export interface IFoodStateContext{
     isSuccess: boolean;
     isError: boolean;
     foodItem?: IFood;
+    foodItems?: IFood[];
     meal?: IMeal;
     mealPlan?: IMealPlan;
 }
@@ -66,7 +67,7 @@ export interface IFoodStateContext{
 export interface IFoodActionContext{
     createFood: (foodItem: IFood) => void;
     createMealPlan: (mealPlan: IMealPlan) => void;
-    // getClientPlans: () => void;
+    getFoodItems: () => void;
 }
 
 export const INITIAL_STATE = {

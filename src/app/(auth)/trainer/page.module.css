@@ -2,3 +2,52 @@
     width: 100vw;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
 }
+
+.CenteredContent {
+  display: flex;
+  justify-content: center;   
+  align-items: center;
+  text-align: center; 
+  padding: 1rem;
+}
+
+/* Media Queries */
+@media screen and (max-width: 480px) {
+  .header {
+    width: 100vw;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+    padding: 0.5rem;
+  }
+
+  .CenteredContent {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 0.75rem;
+  }
+
+  .CenteredContent {
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .header {
+    padding: 1rem;
+  }
+
+  .logo {
+    
+  }
+
+  .CenteredContent {
+    padding: 1rem;
+    font-size: 1.1rem;
+  }
+}
+

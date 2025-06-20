@@ -1,8 +1,8 @@
-
 import type { Metadata } from "next";
 import "./globals.css";
 import { AuthProvider } from "@/providers/AuthProvider";
 import { TrainerProvider } from "@/providers/TrainerProvider";
+import { FoodProvider } from "@/providers/FoodProvider";
 
 export const metadata: Metadata = {
   title: "NutriSync",
@@ -17,11 +17,11 @@ export default function RootLayout({
   return (
     <AuthProvider>
       <TrainerProvider>
-      <html lang="en">
-        <body>
-          {children}
-        </body>
-      </html>
+        <FoodProvider>
+          <html lang="en">
+            <body>{children}</body>
+          </html>
+        </FoodProvider>
       </TrainerProvider>
     </AuthProvider>
   );

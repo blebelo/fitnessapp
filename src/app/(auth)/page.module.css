@@ -1,11 +1,13 @@
 .page {
-  justify-items: center;  
+  justify-items: center;
   font-family: Sen, sans-serif;
   width: 100vw;
   height: 100%;
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)),
-    url('/assets/food-photo.webp') no-repeat center / cover;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.85),
+      rgba(255, 255, 255, 0.85)
+    ),
+    url("/assets/food-photo.webp") no-repeat center / cover;
 }
 
 /* Header Section */
@@ -22,12 +24,12 @@
 }
 
 .navbar {
-    display: flex;
-    padding: 0.5rem;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    border: none;
+  display: flex;
+  padding: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border: none;
 }
 
 .buttons,
@@ -35,17 +37,17 @@
   padding: 0 1rem;
 }
 
-.trainer{
-  background-color: black;   
-  color: white; 
+.trainer {
+  background-color: black;
+  color: white;
   padding: 0.7rem;
   margin: 0.3rem;
   border-radius: 1rem;
   transition: transform 0.6s ease;
 }
 
-.client{   
-  border: black 0.1 solid; 
+.client {
+  border: black 0.1 solid;
   background-color: rgb(255, 255, 255);
   padding: 0.7rem;
   margin: 0.3rem;
@@ -55,16 +57,15 @@
 
 .client:hover,
 .trainer:hover {
-    cursor: pointer;
-    transform: scale(1.1);
+  cursor: pointer;
+  transform: scale(1.1);
 }
-
 
 /* Main Section */
 .main {
   display: flex;
   flex-direction: column;
-  gap: 1rem; 
+  gap: 1rem;
   justify-items: center;
   padding: 2rem;
   margin: 4rem;
@@ -99,13 +100,13 @@
   cursor: pointer;
 }
 
-
 /* Media Queries */
 @media screen and (max-width: 768px) {
   .main {
     display: flex;
-    flex-direction: column; 
-    justify-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 2rem auto;
     padding: 1rem;
     width: 90vw;
@@ -130,11 +131,13 @@
 @media screen and (max-width: 480px) {
   .main {
     display: flex;
-    flex-direction: column; 
-    justify-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 1rem auto;
     padding: 0.5rem;
     width: 95vw;
+    box-sizing: border-box;
   }
 
   .main h1 {

@@ -1,16 +1,26 @@
 "use client";
-import React from "react";
-import { Table } from "antd";
+import React, { useState } from "react";
+import { Table, Input } from "antd";
 import dayjs from "dayjs";
 import { IClient } from "@/providers/TrainerProvider/context";
- 
+import { ColumnsType } from "antd/es/table";
 
 interface ClientTableProps {
   data: IClient[];
 }
 
 const ClientTable: React.FC<ClientTableProps> = ({ data }) => {
-  const columns = [
+  const [searchText, setSearchText] = useState("");
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchText(e.target.value.toLowerCase());
+  };
+
+  const filteredData = data.filter((client) =>
+    client.fullName.toLowerCase().includes(searchText)
+  );
+
+  const columns: ColumnsType<IClient> = [
     {
       title: "Name",
       dataIndex: "fullName",
@@ -25,6 +35,13 @@ const ClientTable: React.FC<ClientTableProps> = ({ data }) => {
       title: "Sex",
       dataIndex: "sex",
       key: "sex",
+      filters: [
+        { text: "Male", value: "male" },
+        { text: "Female", value: "female" },
+      ],
+    onFilter: (value: boolean | bigint | string | number | symbol, 
+      record: IClient) => record.sex === value,
+
     },
     {
       title: "Contact Number",
@@ -46,12 +63,23 @@ const ClientTable: React.FC<ClientTableProps> = ({ data }) => {
   ];
 
   return (
+    <>
+      <div style={{ marginBottom: 16 }}>
+        <Input
+          placeholder="Search by name"
+          value={searchText}
+          onChange={handleSearch}
+          allowClear
+          style={{ maxWidth: 250 }}
+        />
+      </div>
       <Table
         columns={columns}
-        dataSource={data}
+        dataSource={filteredData}
         rowKey="_id"
-        pagination={{ pageSize: 10 }}
+        pagination={{ pageSize: 8, showSizeChanger: false }}
       />
+    </>
   );
 };
 

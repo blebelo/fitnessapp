@@ -21,10 +21,9 @@ export const useStyles = createStyles({
   `,
   Typography: css`
     font-weight: 500;
-    font-size: 2.5rem;
-    padding: 0 2.5rem;
-    // margin-bottom: 1rem;
-    // border-bottom: .5px solid rgba(0, 0, 0, 0.25);
+    font-size: 2rem;
+    padding: 0 1.5rem;
+    cursor: pointer;
   `,
   Cards: css`
     width: 95vw;
@@ -59,5 +58,15 @@ export const useStyles = createStyles({
     justify-content: center;
     align-items: center;
     min-height: 60vh;
-  `
+  `,
+  Views: css`
+    display: flex;
+  `,
+  CurrentView: css`
+    font-weight: 500;
+    font-size: 2rem;
+    padding: 0 1.5rem;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+  `,
 });

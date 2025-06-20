@@ -9,7 +9,7 @@ import {
   Space,
 } from "antd";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
-import { IFood, IMealPlan } from "@/providers/FoodProvider/context";
+import { IFood} from "@/providers/FoodProvider/context";
 import { useFoodActions, useFoodState } from "@/providers/FoodProvider";
 
 const { TextArea } = Input;
@@ -23,16 +23,12 @@ const MealPlanForm: React.FC = () => {
     getFoodItems();
   }, []);
 
-  const onFinish = (values: IMealPlan) => {
-    console.log("Meal Plan Submitted:", values);
-  };
-
   return (
     <div>
       <Form
         form={form}
         layout="vertical"
-        onFinish={onFinish}
+        onFinish={() => {}}
         initialValues={{
           mealTotals: { calories: 0, carbs: "", protein: "", fat: "" },
           meals: [],

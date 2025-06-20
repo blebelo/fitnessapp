@@ -47,7 +47,7 @@ import { useRouter } from "next/navigation";
         <button 
           onClick={handleTrainer} 
           className={styles.getStarted}>Get Started</button>
-      </main>
+      </maiogn>
     </div>
   );
 }

@@ -19,9 +19,7 @@ const ClientDashboard: React.FC = () => {
     return <Typography>No Meal Plans Found</Typography>;
   }
 
-  const openMeal = () => {
-    console.log("Open Page");
-  };
+
 
   return (
     <>

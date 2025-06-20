@@ -33,7 +33,7 @@ const ClientDashboard: React.FC = () => {
         <Row gutter={[16, 16]}>
           {mealdata.data?.map((mealPlan: IMealPlan) => (
             <Col key={mealPlan._id} xs={22} sm={12} md={8} lg={6}>
-              <MealPlanCard mealPlan={mealPlan} handleClick={openMeal} />
+              <MealPlanCard mealPlan={mealPlan} handleClick={() => {}} />
             </Col>
           ))}
         </Row>

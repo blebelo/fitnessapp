@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import Image from "next/image";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
@@ -47,7 +48,7 @@ import { useRouter } from "next/navigation";
         <button 
           onClick={handleTrainer} 
           className={styles.getStarted}>Get Started</button>
-      </maiogn>
+      </main>
     </div>
   );
 }

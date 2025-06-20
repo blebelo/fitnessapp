@@ -2,3 +2,11 @@
     width: 100vw;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
 }
+
+.CenteredContent {
+  display: flex;
+  justify-content: center;   
+  align-items: center;
+  text-align: center; 
+  padding: 1rem;
+}
